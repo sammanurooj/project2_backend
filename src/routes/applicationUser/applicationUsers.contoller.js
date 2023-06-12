@@ -34,17 +34,22 @@ class UserController {
   }
 
   static async getUserById(req, res, next) {
-    const {
-      params: { id },
-    } = req;
-
+    const id = parseInt(req.params.id, 10);
     try {
       if (!id) {
-        BadRequestError(new Error(`User id is required`), STATUS_CODES.INVALID_INPUT);
+        return BadRequestError(res, new Error(`User id is required`), STATUS_CODES.INVALID_INPUT);
       }
 
       const user = await User.findOne({ where: { id } });
-      UserController.generatePreSignedUrl([user]);
+
+      if (!user) {
+        return BadRequestError(
+          res,
+          new Error(`User with id ${id} not found`),
+          STATUS_CODES.NOT_FOUND
+        );
+      }
+
       return SuccessResponse(res, user);
     } catch (e) {
       next(e);
@@ -75,17 +80,17 @@ class UserController {
         'fsgekjiuyuhuh123345'
       );
 
-      return SuccessResponse(res, { token });
+      return SuccessResponse(res, { token, userId: user.id });
     } catch (e) {
       next(e);
     }
   }
 
   static async signup(req, res, next) {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
-      if (!name || !email || !password) {
+      if (!name || !email || !password || !role) {
         BadRequestError(
           new Error(`Name, email, and password are required`),
           STATUS_CODES.INVALID_INPUT
@@ -103,7 +108,7 @@ class UserController {
         name,
         email,
         password: hashedPassword,
-        role: 'user',
+        role,
       });
 
       return SuccessResponse(res, { user });
