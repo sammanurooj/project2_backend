@@ -22,7 +22,7 @@ export default (sequelize, { STRING, INTEGER }) => {
     },
     {
       sequelize,
-      modelName: 'userLocation',
+      modelName: 'UserLocation',
       timestamps: true,
     }
   );

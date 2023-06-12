@@ -4,7 +4,8 @@ module.exports = {
     return queryInterface.createTable({
       tableName: 'UserLocations',
       schema: process.env.SCHEMA_NAME
-    }, {
+    },
+     {
       id: {
         allowNull: false,
         autoIncrement: true,
