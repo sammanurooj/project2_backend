@@ -219,7 +219,69 @@
 
         ],
         "action": "allow"
+      },
+
+      {
+        "resource": "userlocation/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "userlocation/userlocations",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "userlocation/addLocation",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "userlocation/update/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "userlocation/delete/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
       }
+
+
+
+
+
+
       
     ]
   }
