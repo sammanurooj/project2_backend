@@ -200,7 +200,27 @@
           "PUT"
         ],
         "action": "allow"
+      },
+      {
+        "resource": "/api/users/applicationusers",
+        "methods": [
+          "GET",
+          "PUT"
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
       }
+      
     ]
   }
 ]

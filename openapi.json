@@ -30,7 +30,9 @@
   "paths": {
     "/users": {
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "An endpoint to create a user",
         "operationId": "createUsers",
         "requestBody": {
@@ -64,7 +66,9 @@
       },
       "get": {
         "summary": "Retrieve list of all user for given criteria",
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "operationId": "getUserList",
         "parameters": [
           {
@@ -163,7 +167,9 @@
     "/users/{id}": {
       "get": {
         "summary": "Retrieve user by id",
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "operationId": "getUserById",
         "parameters": [
           {
@@ -205,7 +211,9 @@
         }
       },
       "put": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "An endpoint to update a user",
         "operationId": "updateUsers",
         "parameters": [
@@ -253,7 +261,9 @@
     },
     "/users/deleteUsers": {
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "An endpoint to delete user(s)",
         "operationId": "deleteUsers",
         "requestBody": {
@@ -269,7 +279,9 @@
                     }
                   }
                 },
-                "required": ["ids"]
+                "required": [
+                  "ids"
+                ]
               }
             }
           },
@@ -309,7 +321,9 @@
     },
     "/users/login": {
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "An endpoint to login",
         "operationId": "createUserSession",
         "requestBody": {
@@ -325,7 +339,10 @@
                     "type": "string"
                   }
                 },
-                "required": ["email", "password"]
+                "required": [
+                  "email",
+                  "password"
+                ]
               }
             }
           },
@@ -388,7 +405,6 @@
           }
         }
       },
-
       "Error": {
         "type": "object",
         "properties": {
@@ -431,7 +447,11 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": ["super", "user", "admin"]
+                  "enum": [
+                    "super",
+                    "user",
+                    "admin"
+                  ]
                 },
                 "isActive": {
                   "type": "boolean"

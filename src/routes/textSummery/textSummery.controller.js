@@ -30,7 +30,7 @@ class UserController {
       // });
 
       const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: process.env.OPENAI_API_KEY,
       });
       const openai = new OpenAIApi(configuration);
 
