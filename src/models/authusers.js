@@ -32,6 +32,10 @@ export default (sequelize, { STRING, INTEGER }) => {
         type: STRING,
         allowNull: true,
       },
+      Location: {
+        type: INTEGER,
+        allowNull: true,
+      },
     },
     {
       sequelize,
