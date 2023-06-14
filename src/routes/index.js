@@ -6,6 +6,7 @@ import auth from '../middlewares/auth';
 // import UserTablecontroller from './userTable/userTable.controller';
 import ApplicationUsercontroller from './applicationUser/applicationUsers.contoller';
 import TextSummery from './textSummery/textSummery.controller';
+import UserLocation from './userLocation/userLocation.controller';
 
 const router = express.Router();
 
@@ -45,5 +46,6 @@ router.use(acl.authorize.unless({ path: aclExcludedRoutes }));
 
 router.use('/users', ApplicationUsercontroller.getRouter());
 router.use('/text', TextSummery.getRouter());
+router.use('/userlocation', UserLocation.getRouter());
 
 export default router;
