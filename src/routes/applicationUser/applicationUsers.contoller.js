@@ -6,7 +6,7 @@ import models from '../../models';
 import { STATUS_CODES } from '../../utils/constants';
 import { BadRequestError, SuccessResponse } from '../../utils/helper';
 
-const { User } = models;
+const { User, UserLocation } = models;
 
 class UserController {
   static router;
@@ -40,7 +40,10 @@ class UserController {
         return BadRequestError(res, new Error(`User id is required`), STATUS_CODES.INVALID_INPUT);
       }
 
-      const user = await User.findOne({ where: { id } });
+      const user = await User.findOne({
+        where: { id },
+        include: [{ model: UserLocation, as: 'userLocations' }],
+      });
 
       if (!user) {
         return BadRequestError(

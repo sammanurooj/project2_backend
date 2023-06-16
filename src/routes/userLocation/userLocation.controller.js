@@ -57,6 +57,7 @@ class UserController {
 
   static async createLocation(req, res, next) {
     const { location } = req.body;
+
     try {
       if (!location) {
         BadRequestError(new Error(`please enter data`), STATUS_CODES.INVALID_INPUT);

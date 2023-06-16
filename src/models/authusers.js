@@ -1,12 +1,16 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, { STRING, INTEGER }) => {
-  class AuthUserTable extends Model {
-    // static associate() {
-    // }
+  class User extends Model {
+    static associate(models) {
+      this.belongsTo(models.UserLocation, {
+        foreignKey: 'Location',
+        as: 'userLocations',
+      });
+    }
   }
 
-  AuthUserTable.init(
+  User.init(
     {
       id: {
         allowNull: false,
@@ -27,7 +31,6 @@ export default (sequelize, { STRING, INTEGER }) => {
         type: STRING,
         allowNull: false,
       },
-
       role: {
         type: STRING,
         allowNull: true,
@@ -43,5 +46,6 @@ export default (sequelize, { STRING, INTEGER }) => {
       timestamps: true,
     }
   );
-  return AuthUserTable;
+
+  return User;
 };

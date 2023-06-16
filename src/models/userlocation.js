@@ -1,12 +1,15 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, { STRING, INTEGER }) => {
-  class UserLocationTable extends Model {
-    // static associate() {
-    // }
+  class UserLocation extends Model {
+    static associate(models) {
+      this.hasMany(models.User, {
+        foreignKey: 'Location',
+      });
+    }
   }
 
-  UserLocationTable.init(
+  UserLocation.init(
     {
       id: {
         allowNull: false,
@@ -14,10 +17,9 @@ export default (sequelize, { STRING, INTEGER }) => {
         type: INTEGER,
         autoIncrement: true,
       },
-
       location: {
         type: STRING,
-        allowNull: true,
+        allowNull: false,
       },
     },
     {
@@ -26,5 +28,6 @@ export default (sequelize, { STRING, INTEGER }) => {
       timestamps: true,
     }
   );
-  return UserLocationTable;
+
+  return UserLocation;
 };

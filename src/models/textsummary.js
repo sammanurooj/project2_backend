@@ -22,6 +22,11 @@ export default (sequelize, { TEXT, INTEGER }) => {
         type: TEXT,
         allowNull: true,
       },
+
+      userID: {
+        type: INTEGER,
+        allowNull: true,
+      },
     },
     {
       sequelize,
