@@ -13,11 +13,12 @@ class UserController {
   static getRouter() {
     this.router = express.Router();
     this.router.post('/addtext', this.UserText);
+    this.router.get('/:id', this.getUserTextById);
     return this.router;
   }
 
   static async UserText(req, res, next) {
-    const { userText } = req.body;
+    const { userText, userID } = req.body;
 
     try {
       if (!userText) {
@@ -39,7 +40,7 @@ class UserController {
         model: 'text-davinci-003',
         prompt: `Summarize this for a second-grade student:\n\n${userText}`,
         temperature: 1,
-        max_tokens: 64,
+        max_tokens: 120,
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
@@ -51,6 +52,7 @@ class UserController {
         const summary = await textsummarie.create({
           userText,
           SummerizeText: summaryText,
+          userID,
         });
 
         return SuccessResponse(res, summary);
@@ -60,6 +62,30 @@ class UserController {
       next(e);
     }
   }
+
+  static async getUserTextById(req, res, next) {
+    const id = parseInt(req.params.id, 10);
+    try {
+      if (!id) {
+        return BadRequestError(res, new Error(`id is required`), STATUS_CODES.INVALID_INPUT);
+      }
+
+      const users = await textsummarie.findAll({ where: { userID: id } });
+
+      if (!users || users.length === 0) {
+        return BadRequestError(
+          res,
+          new Error(`No items found with id ${id}`),
+          STATUS_CODES.NOT_FOUND
+        );
+      }
+
+      return SuccessResponse(res, users);
+    } catch (e) {
+      next(e);
+    }
+  }
+
 }
 
 export default UserController;
