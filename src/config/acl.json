@@ -275,6 +275,29 @@
 
         ],
         "action": "allow"
+      },
+
+      {
+        "resource": "text/addtext",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "text/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
       }
 
 

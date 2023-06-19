@@ -28,7 +28,7 @@ const aclExcludedRoutes = [
   '/api/users/signup',
   '/api/users/:id',
   // '/api/users/applicationusers',
-  '/api/text/addtext',
+  
 
   /^\/api-docs\/.*/,
 ];
