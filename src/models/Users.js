@@ -4,7 +4,8 @@ export default (sequelize, { STRING, INTEGER }) => {
   class User extends Model {
     static associate(models) {
       this.belongsTo(models.UserLocation, {
-        foreignKey: 'Location',
+        foreignKey: 'locationId',
+        targetKey: 'id',
         as: 'userLocations',
       });
     }
@@ -35,7 +36,7 @@ export default (sequelize, { STRING, INTEGER }) => {
         type: STRING,
         allowNull: true,
       },
-      Location: {
+      locationId: {
         type: INTEGER,
         allowNull: true,
       },

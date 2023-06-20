@@ -24,7 +24,7 @@ module.exports = {
                 role: {
                     type: Sequelize.STRING
                 },
-                Location: {
+                locationId: {
                     type: Sequelize.INTEGER
 
                 },

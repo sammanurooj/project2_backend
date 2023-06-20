@@ -2,7 +2,7 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.createTable({
-            tableName: 'UserLocations',
+            tableName: 'Enrollments',
             schema: process.env.SCHEMA_NAME
         },
             {
@@ -12,12 +12,15 @@ module.exports = {
                     primaryKey: true,
                     type: Sequelize.INTEGER
                 },
-                location: {
-                    type: Sequelize.STRING
-                },
-                userId: {
+                studentId: {
                     type: Sequelize.INTEGER
                 },
+                subjectId: {
+                    type: Sequelize.INTEGER
+                },
+
+
+
                 createdAt: {
                     allowNull: false,
                     type: Sequelize.DATE
@@ -29,6 +32,6 @@ module.exports = {
             });
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('UserLocations');
+        return queryInterface.dropTable('Enrollments');
     }
 };

@@ -1,15 +1,17 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, { STRING, INTEGER }) => {
-  class UserLocation extends Model {
+  class Subject extends Model {
     static associate(models) {
-      this.hasMany(models.User, {
-        foreignKey: 'locationId',
+      Subject.belongsToMany(models.Student, {
+        through: models.Enrollment,
+        foreignKey: 'subjectId',
+        as: 'students',
       });
     }
   }
 
-  UserLocation.init(
+  Subject.init(
     {
       id: {
         allowNull: false,
@@ -17,17 +19,17 @@ export default (sequelize, { STRING, INTEGER }) => {
         type: INTEGER,
         autoIncrement: true,
       },
-      location: {
+      subjectName: {
         type: STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
       sequelize,
-      modelName: 'UserLocation',
+      modelName: 'Subject',
       timestamps: true,
     }
   );
 
-  return UserLocation;
+  return Subject;
 };

@@ -26,14 +26,7 @@
         ],
         "action": "allow"
       },
-      {
-        "resource": "users/:id",
-        "methods": [
-          "GET",
-          "PUT"
-        ],
-        "action": "allow"
-      },
+      
       {
         "resource": "users/birthday",
         "methods": [
@@ -201,48 +194,10 @@
         ],
         "action": "allow"
       },
-      {
-        "resource": "/api/users/applicationusers",
-        "methods": [
-          "GET",
-          "PUT"
-        ],
-        "action": "allow"
-      },
-      {
-        "resource": "users/:id",
-        "methods": [
-          "GET",
-          "PUT",
-          "POST",
-          "DELETE"
-
-        ],
-        "action": "allow"
-      },
-
-      {
-        "resource": "userlocation/:id",
-        "methods": [
-          "GET",
-          "PUT",
-          "POST",
-          "DELETE"
-
-        ],
-        "action": "allow"
-      },
-      {
-        "resource": "userlocation/userlocations",
-        "methods": [
-          "GET",
-          "PUT",
-          "POST",
-          "DELETE"
-
-        ],
-        "action": "allow"
-      },
+      
+      
+      
+    
       {
         "resource": "userlocation/addLocation",
         "methods": [

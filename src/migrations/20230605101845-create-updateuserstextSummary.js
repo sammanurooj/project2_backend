@@ -2,9 +2,9 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable({
-      tableName: 'textsummaries',
+      tableName: 'SummaryTexts',
       schema: process.env.SCHEMA_NAME
-    },  {
+    }, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,11 +12,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userText: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
-      SummerizeText: {
-        type: Sequelize.STRING
+      summarizeText: {
+        type: Sequelize.TEXT
       },
+      userId: {
+
+        type: Sequelize.INTEGER
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -28,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('textsummaries');
+    return queryInterface.dropTable('SummaryTexts');
   }
 };

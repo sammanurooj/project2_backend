@@ -18,19 +18,19 @@ export default (sequelize, { TEXT, INTEGER }) => {
         type: TEXT,
         allowNull: true,
       },
-      SummerizeText: {
+      summarizeText: {
         type: TEXT,
         allowNull: true,
       },
 
-      userID: {
+      userId: {
         type: INTEGER,
         allowNull: true,
       },
     },
     {
       sequelize,
-      modelName: 'textsummarie',
+      modelName: 'SummaryText',
       timestamps: true,
     }
   );

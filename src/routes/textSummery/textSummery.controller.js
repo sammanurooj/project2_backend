@@ -6,7 +6,7 @@ import { BadRequestError, SuccessResponse } from '../../utils/helper';
 
 require('dotenv').config();
 
-const { textsummarie } = models;
+const { SummaryText } = models;
 class UserController {
   static router;
 
@@ -18,7 +18,7 @@ class UserController {
   }
 
   static async UserText(req, res, next) {
-    const { userText, userID } = req.body;
+    const { userText, userId } = req.body;
 
     try {
       if (!userText) {
@@ -49,10 +49,10 @@ class UserController {
       if (response.data.choices && response.data.choices.length > 0) {
         const summaryText = response.data.choices[0].text.trim();
 
-        const summary = await textsummarie.create({
+        const summary = await SummaryText.create({
           userText,
-          SummerizeText: summaryText,
-          userID,
+          summarizeText: summaryText,
+          userId,
         });
 
         return SuccessResponse(res, summary);
@@ -70,7 +70,7 @@ class UserController {
         return BadRequestError(res, new Error(`id is required`), STATUS_CODES.INVALID_INPUT);
       }
 
-      const users = await textsummarie.findAll({ where: { userID: id } });
+      const users = await SummaryText.findAll({ where: { userId: id } });
 
       if (!users || users.length === 0) {
         return BadRequestError(
@@ -85,7 +85,6 @@ class UserController {
       next(e);
     }
   }
-
 }
 
 export default UserController;

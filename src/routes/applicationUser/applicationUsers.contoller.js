@@ -90,10 +90,10 @@ class UserController {
   }
 
   static async signup(req, res, next) {
-    const { name, email, password, role, Location } = req.body;
+    const { name, email, password, role, locationId } = req.body;
 
     try {
-      if (!name || !email || !password || !role || !Location) {
+      if (!name || !email || !password || !role || !locationId) {
         return BadRequestError(
           `Name, email, and password are required`,
           STATUS_CODES.INVALID_INPUT
@@ -112,7 +112,7 @@ class UserController {
         email,
         password: hashedPassword,
         role,
-        Location,
+        locationId,
       });
 
       return SuccessResponse(res, { user });
