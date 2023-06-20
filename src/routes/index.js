@@ -7,6 +7,7 @@ import auth from '../middlewares/auth';
 import ApplicationUsercontroller from './applicationUser/applicationUsers.contoller';
 import TextSummery from './textSummery/textSummery.controller';
 import UserLocation from './userLocation/userLocation.controller';
+import Student from './student/student.controller';
 
 const router = express.Router();
 
@@ -31,8 +32,6 @@ const aclExcludedRoutes = [
   '/api/userlocation/userlocations',
   '/api/userlocation/addLocation',
   '/api/userlocation/:id',
- 
-
 
   /^\/api-docs\/.*/,
 ];
@@ -51,5 +50,6 @@ router.use(acl.authorize.unless({ path: aclExcludedRoutes }));
 router.use('/users', ApplicationUsercontroller.getRouter());
 router.use('/text', TextSummery.getRouter());
 router.use('/userlocation', UserLocation.getRouter());
+router.use('/student', Student.getRouter());
 
 export default router;

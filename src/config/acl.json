@@ -253,7 +253,67 @@
 
         ],
         "action": "allow"
+      },
+      {
+        "resource": "student/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      
+      
+      {
+        "resource": "student/update/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "student/students",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "student/addStudent",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
+      },
+      {
+        "resource": "student/delete/:id",
+        "methods": [
+          "GET",
+          "PUT",
+          "POST",
+          "DELETE"
+
+        ],
+        "action": "allow"
       }
+
+
+
 
 
 
